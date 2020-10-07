@@ -376,11 +376,11 @@ function GarbageQueue.push(self, garbage)
         if metal then
           self.metal:push(v)
         elseif from_chain or height > 1 then
-          if not from_chain then
+	  self.chain_garbage:push(v)
+        if not from_chain then
             print("ERROR: garbage with height > 1 was not marked as 'from_chain'")
             print("adding it to the chain garbage queue anyway")
           end
-          self.chain_garbage:push(v)
         else
           self.combo_garbage[width]:push(v)
         end
